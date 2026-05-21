@@ -1,0 +1,20 @@
+{
+  "name": "devtoolbox",
+  "version": "1.0.0",
+  "description": "A collection of fast, free, browser-based developer utilities",
+  "scripts": {
+    "start": "npx serve ."
+  },
+  "keywords": [
+    "tools",
+    "developer",
+    "utilities",
+    "json",
+    "base64",
+    "jwt",
+    "css",
+    "regex"
+  ],
+  "author": "",
+  "license": "MIT"
+}

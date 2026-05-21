@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Terms of Service - DevToolbox</title>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&amp;family=Hanken+Grotesk:wght@400;700;800&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+tailwind.config = {
+    darkMode: "class",
+    theme: {
+        extend: {
+            colors: {
+                surface: 'var(--surface)',
+                'surface-container-lowest': 'var(--surface-container-lowest)',
+                'surface-container-low': 'var(--surface-container-low)',
+                'surface-container': 'var(--surface-container)',
+                'on-surface': 'var(--on-surface)',
+                'on-surface-variant': 'var(--on-surface-variant)',
+                outline: 'var(--outline)',
+                'outline-variant': 'var(--outline-variant)',
+                primary: 'var(--primary)',
+                'on-primary': 'var(--on-primary)',
+                background: 'var(--background)',
+                'on-background': 'var(--on-background)',
+            },
+            borderRadius: {
+                lg: 'var(--rounded-lg)',
+                xl: 'var(--rounded-xl)',
+            },
+            spacing: {
+                gutter: 'var(--gutter)',
+                margin: 'var(--margin)',
+                'margin-mobile': 'var(--margin-mobile)',
+                'container-max': 'var(--container-max)',
+            },
+            fontFamily: {
+                headline: ['var(--font-headline)'],
+                mono: ['var(--font-mono)'],
+            },
+            fontSize: {
+                'h-xl': ['var(--h-xl-size)', {'lineHeight': 'var(--h-xl-lh)', 'letterSpacing': 'var(--h-xl-ls)', 'fontWeight': 'var(--h-xl-weight)'}],
+                'h-lg': ['var(--h-lg-size)', {'lineHeight': 'var(--h-lg-lh)', 'fontWeight': 'var(--h-lg-weight)'}],
+                'h-md': ['var(--h-md-size)', {'lineHeight': 'var(--h-md-lh)', 'fontWeight': 'var(--h-md-weight)'}],
+                'label-sm': ['var(--label-size)', {'lineHeight': 'var(--label-lh)', 'letterSpacing': 'var(--label-ls)', 'fontWeight': 'var(--label-weight)'}],
+                'body-md': ['var(--body-size)', {'lineHeight': 'var(--body-lh)', 'fontWeight': 'var(--body-weight)'}],
+            }
+        }
+    }
+}
+</script>
+<style>
+:root {
+    --surface: #f8f9fa;
+    --surface-dim: #d9dadb;
+    --surface-bright: #f8f9fa;
+    --surface-container-lowest: #ffffff;
+    --surface-container-low: #f3f4f5;
+    --surface-container: #edeeef;
+    --surface-container-high: #e7e8e9;
+    --surface-container-highest: #e1e3e4;
+    --on-surface: #191c1d;
+    --on-surface-variant: #4c4546;
+    --inverse-surface: #2e3132;
+    --inverse-on-surface: #f0f1f2;
+    --outline: #7e7576;
+    --outline-variant: #cfc4c5;
+    --surface-tint: #5e5e5e;
+    --primary: #000000;
+    --on-primary: #ffffff;
+    --primary-container: #1b1b1b;
+    --on-primary-container: #848484;
+    --inverse-primary: #c6c6c6;
+    --secondary: #5e5e5e;
+    --background: #f8f9fa;
+    --on-background: #191c1d;
+    --surface-variant: #e1e3e4;
+    --spacing-unit: 8px;
+    --gutter: 24px;
+    --margin: 48px;
+    --margin-mobile: 16px;
+    --container-max: 1200px;
+    --rounded-base: 0.25rem;
+    --rounded-lg: 0.5rem;
+    --rounded-xl: 0.75rem;
+    --font-headline: 'Hanken Grotesk', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --h-xl-size: 40px;
+    --h-xl-weight: 800;
+    --h-xl-lh: 1.1;
+    --h-xl-ls: -0.02em;
+    --h-lg-size: 24px;
+    --h-lg-weight: 700;
+    --h-lg-lh: 1.2;
+    --h-md-size: 18px;
+    --h-md-weight: 700;
+    --h-md-lh: 1.4;
+    --label-size: 12px;
+    --label-weight: 700;
+    --label-lh: 1.0;
+    --label-ls: 0.1em;
+    --body-size: 14px;
+    --body-weight: 400;
+    --body-lh: 1.6;
+    --grid-bg-url: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAaF-hNB2I-_u9X8ZT1btxE55i5OpHp-pxzWSo2zu6bjccBAKv4p9RyXkgk6XTDLsLGxF_RF_sqafkWhFp0hlSPcBUpON5GCAgGxxSAVz1eN23YMtHU8o81rVKfWwLf47prpPksyU1N-vSi-txCletGO5pRen7gSs758f8sgQ7-Avy-7E47ent4wX1k28xHgrgHmh7-m2tNmfbJ6_5zJbjPZwe51kUZlFGEmQ6h7TyOhsFuzO1VsAdA8I7BYsE8vUoLVtzo1jyKvyFz');
+    --grid-opacity: 0.4;
+    --grid-filter: none;
+    --card-bg: var(--surface-container-lowest);
+    --search-border: var(--outline);
+}
+.dark {
+    --surface: #131313;
+    --surface-dim: #131313;
+    --surface-bright: #3a3939;
+    --surface-container-lowest: #0e0e0e;
+    --surface-container-low: #1c1b1b;
+    --surface-container: #201f1f;
+    --surface-container-high: #2a2a2a;
+    --surface-container-highest: #353534;
+    --on-surface: #e5e2e1;
+    --on-surface-variant: #bdc8d1;
+    --inverse-surface: #e5e2e1;
+    --inverse-on-surface: #313030;
+    --outline: #87929a;
+    --outline-variant: #3e484f;
+    --surface-tint: #7bd0ff;
+    --primary: #8ed5ff;
+    --on-primary: #00354a;
+    --primary-container: #38bdf8;
+    --on-primary-container: #004965;
+    --inverse-primary: #00668a;
+    --secondary: #4fdbc8;
+    --background: #131313;
+    --on-background: #e5e2e1;
+    --surface-variant: #353534;
+    --spacing-unit: 4px;
+    --gutter: 24px;
+    --margin: 32px;
+    --margin-mobile: 16px;
+    --container-max: 1280px;
+    --rounded-base: 0.25rem;
+    --rounded-lg: 0.5rem;
+    --rounded-xl: 0.75rem;
+    --font-headline: 'Geist', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --h-xl-size: 32px;
+    --h-xl-weight: 600;
+    --h-xl-lh: 1.2;
+    --h-xl-ls: -0.02em;
+    --h-lg-size: 24px;
+    --h-lg-weight: 600;
+    --h-lg-lh: 1.2;
+    --h-md-size: 20px;
+    --h-md-weight: 500;
+    --h-md-lh: 1.4;
+    --label-size: 12px;
+    --label-weight: 500;
+    --label-lh: 1.2;
+    --label-ls: 0.05em;
+    --body-size: 14px;
+    --body-weight: 400;
+    --body-lh: 1.5;
+    --grid-bg-url: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAUNcOQUCo9ZoJ_BVm3Ew9VGs2vSMHDk5GHxiBrM0ckc5TJq7Vu3f1jzPmiwvW4N1ti0sLqnPkPhZJBWaIoXFpZZEgIZRh6mDCZoaPkX_QY836MGpTYXtWxoZOGEJasGtpQDKVZgvotFPaS5wIZaEH2Sw1tIweEXVElpy1zBb7UwffiW1IEk8EGihNGyXgXuyWeJ345C4YRVNqSmgo96MHjY6pO8G4G03O7bGI-96Yh2LdCNbazf5syBI0S3uPJs6rqUZtQe6U_3_rc');
+    --grid-opacity: 0.1;
+    --grid-filter: invert(1);
+    --card-bg: var(--surface-container-low);
+    --search-border: var(--outline-variant);
+}
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+body {
+    scroll-behavior: smooth;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+.grid-bg {
+    background-image: var(--grid-bg-url);
+    background-size: 40px 40px;
+    opacity: var(--grid-opacity);
+    filter: var(--grid-filter);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+    transition: opacity 0.3s ease, filter 0.3s ease;
+}
+</style>
+</head>
+<body class="bg-background text-on-background min-h-screen" style="font-family: var(--font-headline);">
+<div class="grid-bg"></div>
+
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin py-4 bg-surface/80 backdrop-blur-md border-b border-outline-variant">
+    <div class="flex items-center gap-4">
+        <a href="index.html"><img src="kitecodelogo.png" alt="Logo" style="height: 32px; width: auto; object-fit: contain;"/></a>
+    </div>
+    <div class="text-h-md font-bold text-primary hidden sm:block" style="font-size: var(--h-md-size);"><a href="index.html">DevToolbox</a></div>
+    <div class="flex items-center gap-4">
+        <button id="theme-toggle" class="material-symbols-outlined text-on-surface scale-95 active:opacity-80 transition-all p-2 rounded-full hover:bg-surface-container">dark_mode</button>
+    </div>
+</header>
+
+<main class="pt-32 pb-24 px-margin-mobile md:px-margin max-w-container-max mx-auto relative z-10">
+    <section class="max-w-3xl mx-auto">
+        <h1 class="text-h-xl mb-2 text-on-background" style="font-size: var(--h-xl-size); font-weight: var(--h-xl-weight); line-height: var(--h-xl-lh); letter-spacing: var(--h-xl-ls);">Terms of Service</h1>
+        <p class="text-on-surface-variant mb-8" style="font-size: var(--body-size); line-height: var(--body-lh);">Last updated: May 2026</p>
+
+        <p class="mb-6 text-on-surface-variant" style="font-size: var(--body-size); line-height: var(--body-lh);">By using DevToolbox you agree to these terms.</p>
+
+        <h2 class="text-h-md font-bold text-on-surface mb-2" style="font-size: var(--h-md-size);">Use of tools</h2>
+        <p class="mb-6 text-on-surface-variant" style="font-size: var(--body-size); line-height: var(--body-lh);">All tools are provided free of charge for personal and commercial use. No account or payment is required.</p>
+
+        <h2 class="text-h-md font-bold text-on-surface mb-2" style="font-size: var(--h-md-size);">No warranty</h2>
+        <p class="mb-6 text-on-surface-variant" style="font-size: var(--body-size); line-height: var(--body-lh);">DevToolbox is provided "as is" without any warranty. We do not guarantee accuracy, reliability, or fitness for any particular purpose. Use at your own risk.</p>
+
+        <h2 class="text-h-md font-bold text-on-surface mb-2" style="font-size: var(--h-md-size);">No data responsibility</h2>
+        <p class="mb-6 text-on-surface-variant" style="font-size: var(--body-size); line-height: var(--body-lh);">We are not responsible for any data you paste into our tools. Do not paste sensitive information like passwords, private keys, or personal data into any online tool.</p>
+
+        <h2 class="text-h-md font-bold text-on-surface mb-2" style="font-size: var(--h-md-size);">Intellectual property</h2>
+        <p class="mb-6 text-on-surface-variant" style="font-size: var(--body-size); line-height: var(--body-lh);">The DevToolbox name, logo, and design are our property. The underlying open source libraries used are subject to their own respective licenses.</p>
+
+        <h2 class="text-h-md font-bold text-on-surface mb-2" style="font-size: var(--h-md-size);">Limitation of liability</h2>
+        <p class="mb-6 text-on-surface-variant" style="font-size: var(--body-size); line-height: var(--body-lh);">DevToolbox is not liable for any damages arising from use or inability to use this website.</p>
+
+        <h2 class="text-h-md font-bold text-on-surface mb-2" style="font-size: var(--h-md-size);">Changes</h2>
+        <p class="mb-6 text-on-surface-variant" style="font-size: var(--body-size); line-height: var(--body-lh);">We reserve the right to modify or discontinue any tool or service at any time without notice.</p>
+
+        <h2 class="text-h-md font-bold text-on-surface mb-2" style="font-size: var(--h-md-size);">Contact</h2>
+        <p class="text-on-surface-variant" style="font-size: var(--body-size); line-height: var(--body-lh);">For questions email: <a href="mailto:kitecodeservice@gmail.com" class="text-primary underline">kitecodeservice@gmail.com</a></p>
+    </section>
+</main>
+
+<footer class="bg-surface py-12 px-margin-mobile md:px-margin border-t border-outline-variant">
+    <div class="max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+        <div class="text-on-surface-variant font-label-sm text-label-sm">© 2024 DEVTOOLBOX SYSTEMATICS</div>
+        <div class="flex items-center gap-4">
+            <img src="../kitecode.jpg" alt="Logo" style="height: 48px; width: auto;"/>
+            <span class="text-[10px] text-on-surface-variant">By Anshul Datey</span>
+        </div>
+        <div class="flex gap-8 text-on-surface-variant font-label-sm text-label-sm">
+            <a class="hover:text-primary transition-colors" href="privacy.html">PRIVACY</a>
+            <a class="hover:text-primary transition-colors" href="terms.html">TERMS</a>
+            <a class="hover:text-primary transition-colors" href="index.html">HOME</a>
+        </div>
+    </div>
+</footer>
+
+<script>
+const themeToggle = document.getElementById('theme-toggle');
+const html = document.documentElement;
+const savedTheme = localStorage.getItem('theme') || 'light';
+html.className = savedTheme;
+themeToggle.textContent = savedTheme === 'light' ? 'dark_mode' : 'light_mode';
+themeToggle.addEventListener('click', () => {
+    const current = html.className;
+    const next = current === 'light' ? 'dark' : 'light';
+    html.className = next;
+    localStorage.setItem('theme', next);
+    themeToggle.textContent = next === 'light' ? 'dark_mode' : 'light_mode';
+});
+window.addEventListener('scroll', () => {
+    const header = document.querySelector('header');
+    if (window.scrollY > 20) {
+        header.classList.add('shadow-md');
+    } else {
+        header.classList.remove('shadow-md');
+    }
+});
+</script>
+</body>
+</html>

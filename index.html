@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'none';">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="Referrer-Policy" content="no-referrer">
+    <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
+    <meta name="robots" content="index, follow">
+    <meta name="referrer" content="no-referrer">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>DevToolbox - Free Developer Tools</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&amp;family=Hanken+Grotesk:wght@400;700;800&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+    <!-- Material Symbols -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        surface: 'var(--surface)',
+                        'surface-dim': 'var(--surface-dim)',
+                        'surface-bright': 'var(--surface-bright)',
+                        'surface-container-lowest': 'var(--surface-container-lowest)',
+                        'surface-container-low': 'var(--surface-container-low)',
+                        'surface-container': 'var(--surface-container)',
+                        'surface-container-high': 'var(--surface-container-high)',
+                        'surface-container-highest': 'var(--surface-container-highest)',
+                        'on-surface': 'var(--on-surface)',
+                        'on-surface-variant': 'var(--on-surface-variant)',
+                        'inverse-surface': 'var(--inverse-surface)',
+                        'inverse-on-surface': 'var(--inverse-on-surface)',
+                        outline: 'var(--outline)',
+                        'outline-variant': 'var(--outline-variant)',
+                        'surface-tint': 'var(--surface-tint)',
+                        primary: 'var(--primary)',
+                        'on-primary': 'var(--on-primary)',
+                        'primary-container': 'var(--primary-container)',
+                        'on-primary-container': 'var(--on-primary-container)',
+                        'inverse-primary': 'var(--inverse-primary)',
+                        secondary: 'var(--secondary)',
+                        'on-secondary': 'var(--on-secondary)',
+                        'secondary-container': 'var(--secondary-container)',
+                        'on-secondary-container': 'var(--on-secondary-container)',
+                        tertiary: 'var(--tertiary)',
+                        'on-tertiary': 'var(--on-tertiary)',
+                        'tertiary-container': 'var(--tertiary-container)',
+                        'on-tertiary-container': 'var(--on-tertiary-container)',
+                        error: 'var(--error)',
+                        'on-error': 'var(--on-error)',
+                        'error-container': 'var(--error-container)',
+                        'on-error-container': 'var(--on-error-container)',
+                        background: 'var(--background)',
+                        'on-background': 'var(--on-background)',
+                        'surface-variant': 'var(--surface-variant)',
+                    },
+                    borderRadius: {
+                        DEFAULT: "var(--rounded-base)",
+                        lg: "var(--rounded-lg)",
+                        xl: "var(--rounded-xl)",
+                        full: "9999px",
+                    },
+                    spacing: {
+                        unit: "4px",
+                        gutter: "var(--gutter)",
+                        margin: "var(--margin)",
+                        'margin-mobile': "var(--margin-mobile)",
+                        'container-max': "var(--container-max)",
+                    },
+                    fontFamily: {
+                        headline: ['var(--font-headline)'],
+                        body: ['var(--font-headline)'],
+                        mono: ['var(--font-mono)'],
+                    },
+                    fontSize: {
+                        'h-xl': ["var(--h-xl-size)", {"lineHeight": "var(--h-xl-lh)", "letterSpacing": "var(--h-xl-ls)", "fontWeight": "var(--h-xl-weight)"}],
+                        'h-lg': ["var(--h-lg-size)", {"lineHeight": "var(--h-lg-lh)", "fontWeight": "var(--h-lg-weight)"}],
+                        'h-md': ["var(--h-md-size)", {"lineHeight": "var(--h-md-lh)", "fontWeight": "var(--h-md-weight)"}],
+                        'label-sm': ["var(--label-size)", {"lineHeight": "var(--label-lh)", "letterSpacing": "var(--label-ls)", "fontWeight": "var(--label-weight)"}],
+                        'body-md': ["var(--body-size)", {"lineHeight": "var(--body-lh)", "fontWeight": "var(--body-weight)"}],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="styles/global.css">
+    <style>
+        .grid-bg {
+            background-image: var(--grid-bg-url);
+            background-size: 40px 40px;
+            opacity: var(--grid-opacity);
+            filter: var(--grid-filter);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+            transition: opacity 0.3s ease, filter 0.3s ease;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen">
+    <div class="grid-bg"></div>
+    
+    <!-- TopNavBar -->
+    <header class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin py-4 max-w-container-max mx-auto bg-surface/80 backdrop-blur-md border-b border-outline-variant">
+        <div class="flex items-center gap-4">
+            <a href="index.html" class="flex items-center">
+                <img src="new ui/kitecodelogo.png" alt="Secondary Logo" style="height: 32px; width: auto; object-fit: contain;"/>
+            </a>
+            <div class="font-h-md text-h-md font-bold text-primary hidden sm:block">DevToolbox</div>
+        </div>
+        <nav class="hidden md:flex items-center gap-8">
+            <a class="font-label-sm text-label-sm text-primary border-b-2 border-primary py-1" href="#">Tools</a>
+            <a class="font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-colors px-2 py-1" href="#">Categories</a>
+            <a class="font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-colors px-2 py-1" href="#">Recent</a>
+        </nav>
+        <div class="flex items-center gap-4">
+            <div class="relative hidden lg:block">
+                <input class="bg-surface-container-low border border-outline-variant px-4 py-2 text-body-md rounded-lg focus:outline-none focus:ring-1 focus:ring-primary w-64 text-on-surface placeholder:text-outline" placeholder="Quick search..." type="text"/>
+            </div>
+            <button id="theme-toggle" class="material-symbols-outlined text-on-surface scale-95 active:opacity-80 transition-all p-2 rounded-full hover:bg-surface-container">dark_mode</button>
+        </div>
+    </header>
+
+    <main class="pt-32 pb-24 px-margin-mobile md:px-margin max-w-container-max mx-auto relative z-10">
+        <!-- Hero Section -->
+        <section class="mb-16 text-center md:text-left">
+            <h1 class="font-h-xl text-h-xl mb-4 text-on-background">Free Developer Tools</h1>
+            <p class="text-h-lg text-on-surface-variant max-w-2xl mb-8">Fast, free, anonymous. All the essential utilities for modern software engineering workflows in one systematic place. No login required.</p>
+            <div class="relative max-w-3xl">
+                <span class="absolute inset-y-0 left-4 flex items-center pointer-events-none text-outline">
+                    <span class="material-symbols-outlined">search</span>
+                </span>
+                <input id="tool-search" class="w-full bg-surface-container-lowest border border-outline-variant px-12 py-4 text-h-lg rounded-xl focus:outline-none focus:border-primary transition-all shadow-sm text-on-surface placeholder:text-outline" placeholder="Search tools..." type="text"/>
+            </div>
+        </section>
+
+        <!-- Tool Grid -->
+        <div class="space-y-16">
+            <!-- ENCODING -->
+            <section id="category-encoding">
+                <div class="border-b border-outline-variant mb-6 pb-2">
+                    <h2 class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">ENCODING</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+                    <!-- Base64 -->
+                    <div class="tool-card bg-surface-container-low border border-outline-variant p-6 hover:border-primary transition-all group flex flex-col justify-between h-full rounded-lg">
+                        <div>
+                            <span class="material-symbols-outlined text-primary mb-4 block">lock</span>
+                            <h3 class="font-h-md text-h-md text-on-surface mb-2">Base64 Encoder/Decoder</h3>
+                            <p class="text-body-md text-on-surface-variant mb-6">Securely encode or decode text and binary data into Base64 format for safe transmission.</p>
+                        </div>
+                        <a class="inline-flex items-center gap-2 text-primary font-bold hover:gap-4 transition-all" href="base64/index.html">Open tool <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+                    </div>
+                    <!-- URL Encode -->
+                    <div class="tool-card bg-surface-container-low border border-outline-variant p-6 hover:border-primary transition-all group flex flex-col justify-between h-full rounded-lg">
+                        <div>
+                            <span class="material-symbols-outlined text-primary mb-4 block">link</span>
+                            <h3 class="font-h-md text-h-md text-on-surface mb-2">URL Encoder/Decoder</h3>
+                            <p class="text-body-md text-on-surface-variant mb-6">Convert special characters in strings to their URL-friendly percent-encoded equivalents.</p>
+                        </div>
+                        <a class="inline-flex items-center gap-2 text-primary font-bold hover:gap-4 transition-all" href="url-encode/index.html">Open tool <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+                    </div>
+                    <!-- HTML Entity -->
+                    <div class="tool-card bg-surface-container-low border border-outline-variant p-6 hover:border-primary transition-all group flex flex-col justify-between h-full rounded-lg">
+                        <div>
+                            <span class="material-symbols-outlined text-primary mb-4 block">code</span>
+                            <h3 class="font-h-md text-h-md text-on-surface mb-2">HTML Entity Encoder</h3>
+                            <p class="text-body-md text-on-surface-variant mb-6">Convert special characters to safe HTML entities to prevent rendering issues.</p>
+                        </div>
+                        <a class="inline-flex items-center gap-2 text-primary font-bold hover:gap-4 transition-all" href="html-entity/index.html">Open tool <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- JSON -->
+            <section id="category-json">
+                <div class="border-b border-outline-variant mb-6 pb-2">
+                    <h2 class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">JSON</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+                    <div class="tool-card bg-surface-container-low border border-outline-variant p-6 hover:border-primary transition-all group flex flex-col justify-between h-full rounded-lg">
+                        <div>
+                            <span class="material-symbols-outlined text-primary mb-4 block">data_object</span>
+                            <h3 class="font-h-md text-h-md text-on-surface mb-2">JSON Formatter</h3>
+                            <p class="text-body-md text-on-surface-variant mb-6">Prettify messy JSON strings into a readable, indented structure with syntax highlighting.</p>
+                        </div>
+                        <a class="inline-flex items-center gap-2 text-primary font-bold hover:gap-4 transition-all" href="json-formatter/index.html">Open tool <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+                    </div>
+                    <div class="tool-card bg-surface-container-low border border-outline-variant p-6 hover:border-primary transition-all group flex flex-col justify-between h-full rounded-lg">
+                        <div>
+                            <span class="material-symbols-outlined text-primary mb-4 block">compress</span>
+                            <h3 class="font-h-md text-h-md text-on-surface mb-2">JSON Minifier</h3>
+                            <p class="text-body-md text-on-surface-variant mb-6">Compress your JSON data by removing all unnecessary whitespace and line breaks.</p>
+                        </div>
+                        <a class="inline-flex items-center gap-2 text-primary font-bold hover:gap-4 transition-all" href="json-minifier/index.html">Open tool <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+                    </div>
+                    <div class="tool-card bg-surface-container-low border border-outline-variant p-6 hover:border-primary transition-all group flex flex-col justify-between h-full rounded-lg">
+                        <div>
+                            <span class="material-symbols-outlined text-primary mb-4 block">rule</span>
+                            <h3 class="font-h-md text-h-md text-on-surface mb-2">JSON Validator</h3>
+                            <p class="text-body-md text-on-surface-variant mb-6">Check for syntax errors and validate your JSON structure against RFC standards.</p>
+                        </div>
+                        <a class="inline-flex items-center gap-2 text-primary font-bold hover:gap-4 transition-all" href="json-validator/index.html">Open tool <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CONVERTERS -->
+            <section id="category-converters">
+                <div class="border-b border-outline-variant mb-6 pb-2">
+                    <h2 class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">CONVERTERS</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+                    <div class="tool-card bg-surface-container-low border border-outline-variant p-6 hover:border-primary transition-all group flex flex-col justify-between h-full rounded-lg">
+                        <div>
+                            <span class="material-symbols-outlined text-primary mb-4 block">palette</span>
+                            <h3 class="font-h-md text-h-md text-on-surface mb-2">Color Converter</h3>
+                            <p class="text-body-md text-on-surface-variant mb-6">Convert colors between HEX, RGB, HSL, and CMYK with a visual picker interface.</p>
+                        </div>
+                        <a class="inline-flex items-center gap-2 text-primary font-bold hover:gap-4 transition-all" href="color-converter/index.html">Open tool <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+                    </div>
+                    <div class="tool-card bg-surface-container-low border border-outline-variant p-6 hover:border-primary transition-all group flex flex-col justify-between h-full rounded-lg">
+                        <div>
+                            <span class="material-symbols-outlined text-primary mb-4 block">schedule</span>
+                            <h3 class="font-h-md text-h-md text-on-surface mb-2">Timestamp Converter</h3>
+                            <p class="text-body-md text-on-surface-variant mb-6">Transform Unix timestamps into human-readable dates and back again easily.</p>
+                        </div>
+                        <a class="inline-flex items-center gap-2 text-primary font-bold hover:gap-4 transition-all" href="timestamp/index.html">Open tool <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+                    </div>
+                    <div class="tool-card bg-surface-container-low border border-outline-variant p-6 hover:border-primary transition-all group flex flex-col justify-between h-full rounded-lg">
+                        <div>
+                            <span class="material-symbols-outlined text-primary mb-4 block">article</span>
+                            <h3 class="font-h-md text-h-md text-on-surface mb-2">Markdown to HTML</h3>
+                            <p class="text-body-md text-on-surface-variant mb-6">Live preview and convert GitHub-flavored markdown into clean, semantic HTML.</p>
+                        </div>
+                        <a class="inline-flex items-center gap-2 text-primary font-bold hover:gap-4 transition-all" href="markdown/index.html">Open tool <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CSS -->
+            <section id="category-css">
+                <div class="border-b border-outline-variant mb-6 pb-2">
+                    <h2 class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">CSS</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+                    <div class="tool-card bg-surface-container-low border border-outline-variant p-6 hover:border-primary transition-all group flex flex-col justify-between h-full rounded-lg">
+                        <div>
+                            <span class="material-symbols-outlined text-primary mb-4 block">content_cut</span>
+                            <h3 class="font-h-md text-h-md text-on-surface mb-2">CSS Minifier</h3>
+                            <p class="text-body-md text-on-surface-variant mb-6">Optimize your stylesheets for production by removing bloat and unnecessary characters.</p>
+                        </div>
+                        <a class="inline-flex items-center gap-2 text-primary font-bold hover:gap-4 transition-all" href="css-minifier/index.html">Open tool <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+                    </div>
+                    <div class="tool-card bg-surface-container-low border border-outline-variant p-6 hover:border-primary transition-all group flex flex-col justify-between h-full rounded-lg">
+                        <div>
+                            <span class="material-symbols-outlined text-primary mb-4 block">auto_awesome</span>
+                            <h3 class="font-h-md text-h-md text-on-surface mb-2">CSS Beautifier</h3>
+                            <p class="text-body-md text-on-surface-variant mb-6">Format minified CSS with standard indentation and spacing for better maintenance.</p>
+                        </div>
+                        <a class="inline-flex items-center gap-2 text-primary font-bold hover:gap-4 transition-all" href="css-beautifier/index.html">Open tool <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- GENERATORS -->
+            <section id="category-generators">
+                <div class="border-b border-outline-variant mb-6 pb-2">
+                    <h2 class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">GENERATORS</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+                    <div class="tool-card bg-surface-container-low border border-outline-variant p-6 hover:border-primary transition-all group flex flex-col justify-between h-full rounded-lg">
+                        <div>
+                            <span class="material-symbols-outlined text-primary mb-4 block">fingerprint</span>
+                            <h3 class="font-h-md text-h-md text-on-surface mb-2">UUID Generator</h3>
+                            <p class="text-body-md text-on-surface-variant mb-6">Generate bulk Version 4 Universally Unique Identifiers for your databases and APIs.</p>
+                        </div>
+                        <a class="inline-flex items-center gap-2 text-primary font-bold hover:gap-4 transition-all" href="uuid/index.html">Open tool <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+                    </div>
+                    <div class="tool-card bg-surface-container-low border border-outline-variant p-6 hover:border-primary transition-all group flex flex-col justify-between h-full rounded-lg">
+                        <div>
+                            <span class="material-symbols-outlined text-primary mb-4 block">key</span>
+                            <h3 class="font-h-md text-h-md text-on-surface mb-2">JWT Decoder</h3>
+                            <p class="text-body-md text-on-surface-variant mb-6">Safely decode JSON Web Tokens locally to inspect header and payload data.</p>
+                        </div>
+                        <a class="inline-flex items-center gap-2 text-primary font-bold hover:gap-4 transition-all" href="jwt/index.html">Open tool <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+                    </div>
+                    <div class="tool-card bg-surface-container-low border border-outline-variant p-6 hover:border-primary transition-all group flex flex-col justify-between h-full rounded-lg">
+                        <div>
+                            <span class="material-symbols-outlined text-primary mb-4 block">regular_expression</span>
+                            <h3 class="font-h-md text-h-md text-on-surface mb-2">Regex Tester</h3>
+                            <p class="text-body-md text-on-surface-variant mb-6">Build and test regular expressions with live matching, groups, and substitution.</p>
+                        </div>
+                        <a class="inline-flex items-center gap-2 text-primary font-bold hover:gap-4 transition-all" href="regex/index.html">Open tool <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- BottomNavBar -->
+    <nav class="fixed bottom-0 w-full z-50 flex justify-around items-center h-16 bg-surface border-t border-outline-variant md:hidden">
+        <a class="flex flex-col items-center gap-1 text-primary font-bold scale-110 transition-transform duration-200" href="index.html">
+            <span class="material-symbols-outlined">home</span>
+            <span class="font-label-sm text-[10px]">Home</span>
+        </a>
+        <a class="flex flex-col items-center gap-1 text-on-surface-variant opacity-60 hover:text-primary transition-transform duration-200" href="#">
+            <span class="material-symbols-outlined">star</span>
+            <span class="font-label-sm text-[10px]">Favorites</span>
+        </a>
+        <a class="flex flex-col items-center gap-1 text-on-surface-variant opacity-60 hover:text-primary transition-transform duration-200" href="#">
+            <span class="material-symbols-outlined">grid_view</span>
+            <span class="font-label-sm text-[10px]">Categories</span>
+        </a>
+        <a class="flex flex-col items-center gap-1 text-on-surface-variant opacity-60 hover:text-primary transition-transform duration-200" href="#">
+            <span class="material-symbols-outlined">settings</span>
+            <span class="font-label-sm text-[10px]">Settings</span>
+        </a>
+    </nav>
+
+    <footer class="bg-surface py-12 px-8 md:px-margin border-t border-outline-variant">
+        <div class="max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="text-on-surface-variant font-label-sm text-label-sm">© 2024 DEVTOOLBOX SYSTEMATICS</div>
+            <div class="flex flex-col items-center gap-2">
+                <img src="kitecode.jpg" alt="Logo" class="h-18 w-auto"/>
+                <span class="text-[10px] text-on-surface-variant">By Anshul Datey</span>
+            </div>
+            <div class="flex gap-8 text-on-surface-variant font-label-sm text-label-sm">
+                <a class="hover:text-primary transition-colors" href="#" rel="noopener noreferrer">PRIVACY</a>
+                <a class="hover:text-primary transition-colors" href="#" rel="noopener noreferrer">TERMS</a>
+                <a class="hover:text-primary transition-colors" href="#" rel="noopener noreferrer">GITHUB</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function sanitize(str) {
+            return str
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/javascript:/gi, '')
+                .replace(/on\w+=/gi, '');
+        }
+
+        // Theme Toggle Logic
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        
+        // Check for saved theme preference or default to light
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        html.className = savedTheme;
+        updateToggleIcon(savedTheme);
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = html.className;
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            html.className = newTheme;
+            localStorage.setItem('theme', newTheme);
+            updateToggleIcon(newTheme);
+        });
+
+        function updateToggleIcon(theme) {
+            themeToggle.textContent = theme === 'light' ? 'dark_mode' : 'light_mode';
+        }
+
+        // Search filter interaction
+        const searchInput = document.getElementById('tool-search');
+        const toolCards = document.querySelectorAll('.tool-card');
+        const sections = document.querySelectorAll('main section');
+
+        searchInput.addEventListener('input', (e) => {
+            const term = e.target.value.toLowerCase();
+            
+            toolCards.forEach(card => {
+                const title = card.querySelector('h3').textContent.toLowerCase();
+                const desc = card.querySelector('p').textContent.toLowerCase();
+                if (title.includes(term) || desc.includes(term)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            
+            // Hide sections with no visible cards
+            sections.forEach(section => {
+                if (section.id === '') return; // Skip hero section if it has no id
+                const visibleCards = section.querySelectorAll('.tool-card[style="display: flex;"], .tool-card:not([style*="display: none"])');
+                if (visibleCards.length === 0 && term !== '') {
+                    section.classList.add('hidden');
+                } else {
+                    section.classList.remove('hidden');
+                }
+            });
+        });
+
+        // Quick search from header
+        const quickSearch = document.querySelector('input[placeholder="Quick search..."]');
+        quickSearch.addEventListener('input', (e) => {
+            searchInput.value = e.target.value;
+            searchInput.dispatchEvent(new Event('input'));
+            if (window.scrollY < 200) {
+                searchInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        });
+
+        // Header shadow on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 20) {
+                header.classList.add('shadow-md');
+            } else {
+                header.classList.remove('shadow-md');
+            }
+        });
+    </script>
+</body>
+</html>

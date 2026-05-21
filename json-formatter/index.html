@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'none';">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="Referrer-Policy" content="no-referrer">
+    <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
+    <meta name="robots" content="index, follow">
+    <meta name="referrer" content="no-referrer">
+    <title>JSON Formatter - DevToolbox</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&amp;family=Hanken+Grotesk:wght@400;700;800&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+    <!-- Material Symbols -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        surface: 'var(--surface)',
+                        'surface-dim': 'var(--surface-dim)',
+                        'surface-bright': 'var(--surface-bright)',
+                        'surface-container-lowest': 'var(--surface-container-lowest)',
+                        'surface-container-low': 'var(--surface-container-low)',
+                        'surface-container': 'var(--surface-container)',
+                        'surface-container-high': 'var(--surface-container-high)',
+                        'surface-container-highest': 'var(--surface-container-highest)',
+                        'on-surface': 'var(--on-surface)',
+                        'on-surface-variant': 'var(--on-surface-variant)',
+                        'inverse-surface': 'var(--inverse-surface)',
+                        'inverse-on-surface': 'var(--inverse-on-surface)',
+                        outline: 'var(--outline)',
+                        'outline-variant': 'var(--outline-variant)',
+                        'surface-tint': 'var(--surface-tint)',
+                        primary: 'var(--primary)',
+                        'on-primary': 'var(--on-primary)',
+                        'primary-container': 'var(--primary-container)',
+                        'on-primary-container': 'var(--on-primary-container)',
+                        'inverse-primary': 'var(--inverse-primary)',
+                        secondary: 'var(--secondary)',
+                        'on-secondary': 'var(--on-secondary)',
+                        'secondary-container': 'var(--secondary-container)',
+                        'on-secondary-container': 'var(--on-secondary-container)',
+                        tertiary: 'var(--tertiary)',
+                        'on-tertiary': 'var(--on-tertiary)',
+                        'tertiary-container': 'var(--tertiary-container)',
+                        'on-tertiary-container': 'var(--on-tertiary-container)',
+                        error: 'var(--error)',
+                        'on-error': 'var(--on-error)',
+                        'error-container': 'var(--error-container)',
+                        'on-error-container': 'var(--on-error-container)',
+                        background: 'var(--background)',
+                        'on-background': 'var(--on-background)',
+                        'surface-variant': 'var(--surface-variant)',
+                    },
+                    borderRadius: {
+                        DEFAULT: "var(--rounded-base)",
+                        lg: "var(--rounded-lg)",
+                        xl: "var(--rounded-xl)",
+                        full: "9999px",
+                    },
+                    spacing: {
+                        unit: "4px",
+                        gutter: "var(--gutter)",
+                        margin: "var(--margin)",
+                        'margin-mobile': "var(--margin-mobile)",
+                        'container-max': "var(--container-max)",
+                    },
+                    fontFamily: {
+                        headline: ['var(--font-headline)'],
+                        body: ['var(--font-headline)'],
+                        mono: ['var(--font-mono)'],
+                    },
+                    fontSize: {
+                        'h-xl': ["var(--h-xl-size)", {"lineHeight": "var(--h-xl-lh)", "letterSpacing": "var(--h-xl-ls)", "fontWeight": "var(--h-xl-weight)"}],
+                        'h-lg': ["var(--h-lg-size)", {"lineHeight": "var(--h-lg-lh)", "fontWeight": "var(--h-lg-weight)"}],
+                        'h-md': ["var(--h-md-size)", {"lineHeight": "var(--h-md-lh)", "fontWeight": "var(--h-md-weight)"}],
+                        'label-sm': ["var(--label-size)", {"lineHeight": "var(--label-lh)", "letterSpacing": "var(--label-ls)", "fontWeight": "var(--label-weight)"}],
+                        'body-md': ["var(--body-size)", {"lineHeight": "var(--body-lh)", "fontWeight": "var(--body-weight)"}],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../styles/global.css">
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen">
+    <div class="grid-bg"></div>
+    
+    <!-- TopNavBar -->
+    <header class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin py-4 max-w-container-max mx-auto bg-surface/80 backdrop-blur-md border-b border-outline-variant">
+        <div class="flex items-center gap-4">
+            <a href="../index.html" class="flex items-center">
+                <img src="../new ui/kitecodelogo.png" alt="Secondary Logo" style="height: 32px; width: auto; object-fit: contain;"/>
+            </a>
+            <div class="font-h-md text-h-md font-bold text-primary hidden sm:block">DevToolbox</div>
+        </div>
+        <div class="flex items-center gap-4">
+            <button id="theme-toggle" class="material-symbols-outlined text-on-surface scale-95 active:opacity-80 transition-all p-2 rounded-full hover:bg-surface-container">dark_mode</button>
+        </div>
+    </header>
+
+    <main class="pt-32 pb-24 px-margin-mobile md:px-margin max-w-3xl mx-auto relative z-10">
+        <section class="mb-12">
+            <h1 class="font-h-xl text-h-xl mb-4 text-on-background">JSON Formatter</h1>
+            <p class="text-h-lg text-on-surface-variant">Beautify and format raw JSON data to make it human-readable.</p>
+        </section>
+
+        <div class="bg-surface-container-low border border-outline-variant rounded-xl p-6 md:p-8 shadow-sm">
+            <div class="space-y-6">
+                <div>
+                    <label class="block font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest mb-2">Input JSON</label>
+                    <textarea id="input" class="w-full bg-surface-container-lowest border border-outline-variant p-4 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary text-on-surface placeholder:text-outline text-body-md" placeholder="Paste JSON here..." rows="8"></textarea>
+                </div>
+
+                <div class="flex flex-wrap items-center gap-4">
+                    <div class="flex-1 min-w-[150px]">
+                        <label class="block font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest mb-2">Indent</label>
+                        <select id="indent" class="w-full bg-surface-container-lowest border border-outline-variant p-2 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary text-on-surface text-body-md">
+                            <option value="2">2 spaces</option>
+                            <option value="4">4 spaces</option>
+                            <option value="tab">Tabs</option>
+                        </select>
+                    </div>
+                    <div class="flex gap-2 pt-6">
+                        <button class="bg-primary text-on-primary px-6 py-2 rounded-lg font-bold hover:opacity-90 transition-all text-body-md" onclick="format()">Format →</button>
+                        <button class="bg-surface-container-high text-on-surface px-6 py-2 rounded-lg font-bold hover:bg-surface-container-highest transition-all text-body-md" onclick="clearAll()">Clear</button>
+                    </div>
+                </div>
+
+                <div id="error" class="hidden p-4 bg-error-container text-on-error-container rounded-lg text-body-md"></div>
+
+                <div>
+                    <label class="block font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest mb-2">Formatted JSON</label>
+                    <textarea id="output" class="w-full bg-surface-container-lowest border border-outline-variant p-4 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary text-on-surface text-body-md" readonly rows="8"></textarea>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-surface py-12 px-margin-mobile md:px-margin border-t border-outline-variant">
+        <div class="max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="text-on-surface-variant font-label-sm text-label-sm">© 2024 DEVTOOLBOX SYSTEMATICS</div>
+            <div class="flex flex-col items-center gap-2">
+                <img src="../kitecode.jpg" alt="Logo" class="h-8 w-auto"/>
+                <span class="text-[10px] text-on-surface-variant">By Anshul Datey</span>
+            </div>
+            <div class="flex gap-8 text-on-surface-variant font-label-sm text-label-sm">
+                <a class="hover:text-primary transition-colors" href="#">PRIVACY</a>
+                <a class="hover:text-primary transition-colors" href="#">TERMS</a>
+                <a class="hover:text-primary transition-colors" href="#">GITHUB</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    function sanitize(str) {
+        return str
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/javascript:/gi, '')
+            .replace(/on\w+=/gi, '');
+    }
+        // Theme Toggle Logic
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        html.className = savedTheme;
+        updateToggleIcon(savedTheme);
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = html.className;
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            html.className = newTheme;
+            localStorage.setItem('theme', newTheme);
+            updateToggleIcon(newTheme);
+        });
+
+        function updateToggleIcon(theme) {
+            themeToggle.textContent = theme === 'light' ? 'dark_mode' : 'light_mode';
+        }
+
+        // JSON Formatter Logic
+        const input = document.getElementById('input');
+        const output = document.getElementById('output');
+        const indent = document.getElementById('indent');
+        const error = document.getElementById('error');
+
+        function format() {
+            error.classList.add('hidden');
+            try {
+                const parsed = JSON.parse(input.value);
+                const indentVal = indent.value === 'tab' ? '\t' : parseInt(indent.value);
+                output.value = JSON.stringify(parsed, null, indentVal);
+            } catch(e) {
+                error.textContent = 'Invalid JSON: ' + e.message;
+                error.classList.remove('hidden');
+            }
+        }
+
+        function clearAll() {
+            input.value = '';
+            output.value = '';
+            error.classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
