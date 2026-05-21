@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Markdown to HTML - DevToolbox</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&amp;family=Hanken+Grotesk:wght@400;700;800&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+tailwind.config = {
+    darkMode: "class",
+    theme: {
+        extend: {
+            colors: {
+                surface: 'var(--surface)',
+                'surface-dim': 'var(--surface-dim)',
+                'surface-bright': 'var(--surface-bright)',
+                'surface-container-lowest': 'var(--surface-container-lowest)',
+                'surface-container-low': 'var(--surface-container-low)',
+                'surface-container': 'var(--surface-container)',
+                'surface-container-high': 'var(--surface-container-high)',
+                'surface-container-highest': 'var(--surface-container-highest)',
+                'on-surface': 'var(--on-surface)',
+                'on-surface-variant': 'var(--on-surface-variant)',
+                'inverse-surface': 'var(--inverse-surface)',
+                'inverse-on-surface': 'var(--inverse-on-surface)',
+                outline: 'var(--outline)',
+                'outline-variant': 'var(--outline-variant)',
+                'surface-tint': 'var(--surface-tint)',
+                primary: 'var(--primary)',
+                'on-primary': 'var(--on-primary)',
+                'primary-container': 'var(--primary-container)',
+                'on-primary-container': 'var(--on-primary-container)',
+                'inverse-primary': 'var(--inverse-primary)',
+                secondary: 'var(--secondary)',
+                'on-secondary': 'var(--on-secondary)',
+                'secondary-container': 'var(--secondary-container)',
+                'on-secondary-container': 'var(--on-secondary-container)',
+                tertiary: 'var(--tertiary)',
+                'on-tertiary': 'var(--on-tertiary)',
+                'tertiary-container': 'var(--tertiary-container)',
+                'on-tertiary-container': 'var(--on-tertiary-container)',
+                error: 'var(--error)',
+                'on-error': 'var(--on-error)',
+                'error-container': 'var(--error-container)',
+                'on-error-container': 'var(--on-error-container)',
+                background: 'var(--background)',
+                'on-background': 'var(--on-background)',
+                'surface-variant': 'var(--surface-variant)',
+            },
+            borderRadius: {
+                DEFAULT: 'var(--rounded-base)',
+                lg: 'var(--rounded-lg)',
+                xl: 'var(--rounded-xl)',
+                full: '9999px',
+            },
+            spacing: {
+                unit: 'var(--spacing-unit)',
+                gutter: 'var(--gutter)',
+                margin: 'var(--margin)',
+                'margin-mobile': 'var(--margin-mobile)',
+                'container-max': 'var(--container-max)',
+            },
+            fontFamily: {
+                headline: ['var(--font-headline)'],
+                body: ['var(--font-headline)'],
+                mono: ['var(--font-mono)'],
+            },
+            fontSize: {
+                'h-xl': ['var(--h-xl-size)', {'lineHeight': 'var(--h-xl-lh)', 'letterSpacing': 'var(--h-xl-ls)', 'fontWeight': 'var(--h-xl-weight)'}],
+                'h-lg': ['var(--h-lg-size)', {'lineHeight': 'var(--h-lg-lh)', 'fontWeight': 'var(--h-lg-weight)'}],
+                'h-md': ['var(--h-md-size)', {'lineHeight': 'var(--h-md-lh)', 'fontWeight': 'var(--h-md-weight)'}],
+                'label-sm': ['var(--label-size)', {'lineHeight': 'var(--label-lh)', 'letterSpacing': 'var(--label-ls)', 'fontWeight': 'var(--label-weight)'}],
+                'body-md': ['var(--body-size)', {'lineHeight': 'var(--body-lh)', 'fontWeight': 'var(--body-weight)'}],
+                'body-lg': ['var(--body-lg-size)', {'lineHeight': 'var(--body-lg-lh)', 'fontWeight': 'var(--body-lg-weight)'}],
+            }
+        }
+    }
+}
+</script>
+<style>
+:root {
+    /* ── Blueprint Developer Core (Light) ── */
+    --surface: #f8f9fa;
+    --surface-dim: #d9dadb;
+    --surface-bright: #f8f9fa;
+    --surface-container-lowest: #ffffff;
+    --surface-container-low: #f3f4f5;
+    --surface-container: #edeeef;
+    --surface-container-high: #e7e8e9;
+    --surface-container-highest: #e1e3e4;
+    --on-surface: #191c1d;
+    --on-surface-variant: #4c4546;
+    --inverse-surface: #2e3132;
+    --inverse-on-surface: #f0f1f2;
+    --outline: #7e7576;
+    --outline-variant: #cfc4c5;
+    --surface-tint: #5e5e5e;
+    --primary: #000000;
+    --on-primary: #ffffff;
+    --primary-container: #1b1b1b;
+    --on-primary-container: #848484;
+    --inverse-primary: #c6c6c6;
+    --secondary: #5e5e5e;
+    --on-secondary: #ffffff;
+    --secondary-container: #e2e2e2;
+    --on-secondary-container: #646464;
+    --tertiary: #000000;
+    --on-tertiary: #ffffff;
+    --tertiary-container: #1b1b1b;
+    --on-tertiary-container: #848484;
+    --error: #ba1a1a;
+    --on-error: #ffffff;
+    --error-container: #ffdad6;
+    --on-error-container: #93000a;
+    --background: #f8f9fa;
+    --on-background: #191c1d;
+    --surface-variant: #e1e3e4;
+
+    /* Light spacing */
+    --spacing-unit: 8px;
+    --gutter: 24px;
+    --margin: 48px;
+    --margin-mobile: 16px;
+    --container-max: 1200px;
+    --rounded-base: 0.25rem;
+    --rounded-lg: 0.5rem;
+    --rounded-xl: 0.75rem;
+
+    /* Light typography */
+    --font-headline: 'Hanken Grotesk', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --h-xl-size: 40px;
+    --h-xl-weight: 800;
+    --h-xl-lh: 1.1;
+    --h-xl-ls: -0.02em;
+    --h-lg-size: 24px;
+    --h-lg-weight: 700;
+    --h-lg-lh: 1.2;
+    --h-md-size: 18px;
+    --h-md-weight: 700;
+    --h-md-lh: 1.4;
+    --label-size: 12px;
+    --label-weight: 700;
+    --label-lh: 1.0;
+    --label-ls: 0.1em;
+    --body-size: 14px;
+    --body-weight: 400;
+    --body-lh: 1.6;
+    --body-lg-size: 14px;
+    --body-lg-weight: 400;
+    --body-lg-lh: 1.6;
+
+    /* Grid */
+    --grid-bg-url: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAaF-hNB2I-_u9X8ZT1btxE55i5OpHp-pxzWSo2zu6bjccBAKv4p9RyXkgk6XTDLsLGxF_RF_sqafkWhFp0hlSPcBUpON5GCAgGxxSAVz1eN23YMtHU8o81rVKfWwLf47prpPksyU1N-vSi-txCletGO5pRen7gSs758f8sgQ7-Avy-7E47ent4wX1k28xHgrgHmh7-m2tNmfbJ6_5zJbjPZwe51kUZlFGEmQ6h7TyOhsFuzO1VsAdA8I7BYsE8vUoLVtzo1jyKvyFz');
+    --grid-opacity: 0.4;
+    --grid-filter: none;
+    --card-bg: var(--surface-container-lowest);
+    --card-rounded: 0;
+    --search-border: var(--outline);
+}
+
+.dark {
+    /* ── Deep Space Technical (Dark) ── */
+    --surface: #131313;
+    --surface-dim: #131313;
+    --surface-bright: #3a3939;
+    --surface-container-lowest: #0e0e0e;
+    --surface-container-low: #1c1b1b;
+    --surface-container: #201f1f;
+    --surface-container-high: #2a2a2a;
+    --surface-container-highest: #353534;
+    --on-surface: #e5e2e1;
+    --on-surface-variant: #bdc8d1;
+    --inverse-surface: #e5e2e1;
+    --inverse-on-surface: #313030;
+    --outline: #87929a;
+    --outline-variant: #3e484f;
+    --surface-tint: #7bd0ff;
+    --primary: #8ed5ff;
+    --on-primary: #00354a;
+    --primary-container: #38bdf8;
+    --on-primary-container: #004965;
+    --inverse-primary: #00668a;
+    --secondary: #4fdbc8;
+    --on-secondary: #003731;
+    --secondary-container: #04b4a2;
+    --on-secondary-container: #003f38;
+    --tertiary: #ffc176;
+    --on-tertiary: #472a00;
+    --tertiary-container: #f1a02b;
+    --on-tertiary-container: #613b00;
+    --error: #ffb4ab;
+    --on-error: #690005;
+    --error-container: #93000a;
+    --on-error-container: #ffdad6;
+    --background: #131313;
+    --on-background: #e5e2e1;
+    --surface-variant: #353534;
+
+    /* Dark spacing */
+    --spacing-unit: 4px;
+    --gutter: 24px;
+    --margin: 32px;
+    --margin-mobile: 16px;
+    --container-max: 1280px;
+    --rounded-base: 0.25rem;
+    --rounded-lg: 0.5rem;
+    --rounded-xl: 0.75rem;
+
+    /* Dark typography */
+    --font-headline: 'Geist', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --h-xl-size: 32px;
+    --h-xl-weight: 600;
+    --h-xl-lh: 1.2;
+    --h-xl-ls: -0.02em;
+    --h-lg-size: 24px;
+    --h-lg-weight: 600;
+    --h-lg-lh: 1.2;
+    --h-md-size: 20px;
+    --h-md-weight: 500;
+    --h-md-lh: 1.4;
+    --label-size: 12px;
+    --label-weight: 500;
+    --label-lh: 1.2;
+    --label-ls: 0.05em;
+    --body-size: 14px;
+    --body-weight: 400;
+    --body-lh: 1.5;
+    --body-lg-size: 16px;
+    --body-lg-weight: 400;
+    --body-lg-lh: 1.6;
+
+    /* Grid */
+    --grid-bg-url: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAUNcOQUCo9ZoJ_BVm3Ew9VGs2vSMHDk5GHxiBrM0ckc5TJq7Vu3f1jzPmiwvW4N1ti0sLqnPkPhZJBWaIoXFpZZEgIZRh6mDCZoaPkX_QY836MGpTYXtWxoZOGEJasGtpQDKVZgvotFPaS5wIZaEH2Sw1tIweEXVElpy1zBb7UwffiW1IEk8EGihNGyXgXuyWeJ345C4YRVNqSmgo96MHjY6pO8G4G03O7bGI-96Yh2LdCNbazf5syBI0S3uPJs6rqUZtQe6U_3_rc');
+    --grid-opacity: 0.1;
+    --grid-filter: invert(1);
+    --card-bg: var(--surface-container-low);
+    --card-rounded: var(--rounded-lg);
+    --search-border: var(--outline-variant);
+}
+
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+body {
+    scroll-behavior: smooth;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+.grid-bg {
+    background-image: var(--grid-bg-url);
+    background-size: 40px 40px;
+    opacity: var(--grid-opacity);
+    filter: var(--grid-filter);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+    transition: opacity 0.3s ease, filter 0.3s ease;
+}
+</style>
+</head>
+<body class="bg-background text-on-background min-h-screen" style="font-family: var(--font-headline);">
+<div class="grid-bg"></div>
+
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin py-4 bg-surface/80 backdrop-blur-md border-b border-outline-variant">
+    <div class="flex items-center gap-4">
+        <img src="kitecodelogo.png" alt="Logo" style="height: 32px; width: auto; object-fit: contain;"/>
+    </div>
+    <a href="index.html" class="text-h-md font-bold text-primary hidden sm:block" style="font-size: var(--h-md-size);">DevToolbox</a>
+    <div class="flex items-center gap-4">
+        <button id="theme-toggle" class="material-symbols-outlined text-on-surface scale-95 active:opacity-80 transition-all p-2 rounded-full hover:bg-surface-container">dark_mode</button>
+    </div>
+</header>
+
+<main class="pt-32 pb-24 px-margin-mobile md:px-margin max-w-2xl mx-auto relative z-10">
+    <h1 class="text-h-xl mb-8 text-center">Markdown to HTML</h1>
+    <div class="space-y-4">
+        <textarea id="md-input" class="w-full bg-surface-container-low border border-outline-variant rounded-lg p-3 text-on-surface font-mono text-sm" rows="10" placeholder="Enter Markdown here..."># Hello World
+
+This is a **bold** and *italic* text.
+
+## Features
+- Item one
+- Item **two**
+- `code` inline
+
+[Visit DevToolbox](index.html)</textarea>
+        <div class="flex gap-2">
+            <button id="md-convert-btn" class="bg-primary text-on-primary px-4 py-2 rounded-lg font-bold hover:opacity-90 transition-all">Convert to HTML</button>
+            <button id="md-copy-btn" class="bg-primary text-on-primary px-4 py-2 rounded-lg font-bold hover:opacity-90 transition-all">Copy</button>
+        </div>
+        <div id="md-output" class="w-full bg-surface-container-low border border-outline-variant rounded-lg p-4 text-on-surface"></div>
+    </div>
+</main>
+
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center h-16 bg-surface border-t border-outline-variant md:hidden">
+    <a class="flex flex-col items-center gap-1 text-primary font-bold scale-110 transition-transform duration-200" href="index.html">
+        <span class="material-symbols-outlined">home</span>
+        <span class="font-label-sm text-[10px]">Home</span>
+    </a>
+    <a class="flex flex-col items-center gap-1 text-on-surface-variant opacity-60 hover:text-primary transition-transform duration-200" href="#">
+        <span class="material-symbols-outlined">star</span>
+        <span class="font-label-sm text-[10px]">Favorites</span>
+    </a>
+    <a class="flex flex-col items-center gap-1 text-on-surface-variant opacity-60 hover:text-primary transition-transform duration-200" href="#">
+        <span class="material-symbols-outlined">grid_view</span>
+        <span class="font-label-sm text-[10px]">Categories</span>
+    </a>
+    <a class="flex flex-col items-center gap-1 text-on-surface-variant opacity-60 hover:text-primary transition-transform duration-200" href="#">
+        <span class="material-symbols-outlined">settings</span>
+        <span class="font-label-sm text-[10px]">Settings</span>
+    </a>
+</nav>
+
+<footer class="bg-surface py-12 px-margin-mobile md:px-margin border-t border-outline-variant">
+    <div class="max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+        <div class="text-on-surface-variant font-label-sm text-label-sm">© 2024 DEVTOOLBOX SYSTEMATICS</div>
+        <div class="flex items-center gap-4">
+            <img src="../kitecode.jpg" alt="Logo" style="height: 48px; width: auto;"/>
+            <span class="text-[10px] text-on-surface-variant">By Anshul Datey</span>
+        </div>
+        <div class="flex gap-8 text-on-surface-variant font-label-sm text-label-sm">
+            <a class="hover:text-primary transition-colors" href="privacy.html">PRIVACY</a>
+            <a class="hover:text-primary transition-colors" href="terms.html">TERMS</a>
+            <a class="hover:text-primary transition-colors" href="terms.html">GITHUB</a>
+        </div>
+    </div>
+</footer>
+
+<script>
+// Theme Toggle
+const themeToggle = document.getElementById('theme-toggle');
+const html = document.documentElement;
+
+const savedTheme = localStorage.getItem('theme') || 'light';
+html.className = savedTheme;
+themeToggle.textContent = savedTheme === 'light' ? 'dark_mode' : 'light_mode';
+
+themeToggle.addEventListener('click', () => {
+    const current = html.className;
+    const next = current === 'light' ? 'dark' : 'light';
+    html.className = next;
+    localStorage.setItem('theme', next);
+    themeToggle.textContent = next === 'light' ? 'dark_mode' : 'light_mode';
+});
+
+// Header shadow on scroll
+window.addEventListener('scroll', () => {
+    const header = document.querySelector('header');
+    if (window.scrollY > 20) {
+        header.classList.add('shadow-md');
+    } else {
+        header.classList.remove('shadow-md');
+    }
+});
+
+// Markdown to HTML Converter
+function parseInline(text) {
+    text = text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    text = text.replace(/`([^`]+)`/g, '<code class="bg-surface-container-highest px-1 rounded text-sm font-mono">$1</code>');
+    text = text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" class="text-primary underline">$1</a>');
+    text = text.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+    text = text.replace(/\*([^*]+)\*/g, '<em>$1</em>');
+    return text;
+}
+
+function simpleMarkdown(md) {
+    let html = '';
+    const lines = md.split('\n');
+    let inList = false;
+
+    for (let line of lines) {
+        if (/^### /.test(line)) {
+            if (inList) { html += '</ul>'; inList = false; }
+            html += '<h3 class="text-h-md font-bold mt-4 mb-2">' + parseInline(line.slice(4)) + '</h3>';
+        } else if (/^## /.test(line)) {
+            if (inList) { html += '</ul>'; inList = false; }
+            html += '<h2 class="text-h-lg font-bold mt-6 mb-2">' + parseInline(line.slice(3)) + '</h2>';
+        } else if (/^# /.test(line)) {
+            if (inList) { html += '</ul>'; inList = false; }
+            html += '<h1 class="text-h-xl font-bold mt-8 mb-4">' + parseInline(line.slice(2)) + '</h1>';
+        } else if (/^- /.test(line)) {
+            if (!inList) { html += '<ul class="list-disc pl-6 space-y-1 mb-4">'; inList = true; }
+            html += '<li>' + parseInline(line.slice(2)) + '</li>';
+        } else if (line.trim() === '') {
+            if (inList) { html += '</ul>'; inList = false; }
+        } else {
+            if (inList) { html += '</ul>'; inList = false; }
+            html += '<p class="mb-3">' + parseInline(line) + '</p>';
+        }
+    }
+    if (inList) html += '</ul>';
+    return html;
+}
+
+const mdInput = document.getElementById('md-input');
+const mdOutput = document.getElementById('md-output');
+const mdConvert = document.getElementById('md-convert-btn');
+const mdCopy = document.getElementById('md-copy-btn');
+
+mdConvert.addEventListener('click', () => {
+    const md = mdInput.value;
+    mdOutput.innerHTML = simpleMarkdown(md);
+});
+
+mdCopy.addEventListener('click', () => {
+    const htmlText = mdOutput.innerHTML;
+    navigator.clipboard.writeText(htmlText).then(() => {
+        const orig = mdCopy.textContent;
+        mdCopy.textContent = 'Copied!';
+        setTimeout(() => { mdCopy.textContent = orig; }, 2000);
+    });
+});
+
+// Initial render
+mdConvert.dispatchEvent(new Event('click'));
+</script>
+</body>
+</html>

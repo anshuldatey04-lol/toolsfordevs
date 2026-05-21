@@ -273,12 +273,12 @@ body {
 <!-- TopNavBar -->
 <header class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin py-4 bg-surface/80 backdrop-blur-md border-b border-outline-variant">
     <div class="flex items-center gap-4">
-        <img src="kitecodelogo.png" alt="Logo" style="height: 32px; width: auto; object-fit: contain;"/>
+        <img src="kitecodelogo.png" alt="Logo" style="height: 45px; width: auto; object-fit: contain;"/>
     </div>
-    <div class="text-h-md font-bold text-primary hidden sm:block" style="font-size: var(--h-md-size);">DevToolbox</div>
+    <div class="text-h-md font-bold text-primary hidden sm:block" style="font-size: 50;">DevToolbox</div>
     <div class="flex items-center gap-4">
         <div class="relative hidden lg:block">
-            <input class="bg-surface-container-low border px-4 py-2 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary w-64 text-on-surface placeholder:text-outline" style="border-color: var(--search-border); font-size: var(--body-size);" placeholder="Quick search..." type="text"/>
+            <input id="tool-search" class="bg-surface-container-low border px-4 py-2 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary w-64 text-on-surface placeholder:text-outline" style="border-color: var(--search-border); font-size: var(--body-size);" placeholder="Quick search..." type="text"/>
         </div>
         <button id="theme-toggle" class="material-symbols-outlined text-on-surface scale-95 active:opacity-80 transition-all p-2 rounded-full hover:bg-surface-container">dark_mode</button>
     </div>
@@ -305,7 +305,7 @@ body {
                         <h3 class="text-on-surface mb-2 font-bold" style="font-size: var(--h-md-size); line-height: var(--h-md-lh);">Base64 Encoder/Decoder</h3>
                         <p class="text-on-surface-variant mb-6" style="font-size: var(--body-size); line-height: var(--body-lh);">Securely encode or decode text and binary data into Base64 format for safe transmission.</p>
                     </div>
-                    <a class="inline-flex items-center gap-2 text-primary font-bold hover:gap-4 transition-all" href="#">Open tool <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+                    <a class="inline-flex items-center gap-2 text-primary font-bold hover:gap-4 transition-all" href="base64.html">Open tool <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
                 </div>
                 <div class="tool-card p-6 hover:border-primary transition-all group flex flex-col justify-between h-full rounded-lg" style="background: var(--card-bg); border: 1px solid var(--outline-variant); border-radius: var(--card-rounded);">
                     <div>
@@ -313,7 +313,7 @@ body {
                         <h3 class="text-on-surface mb-2 font-bold" style="font-size: var(--h-md-size); line-height: var(--h-md-lh);">URL Encoder/Decoder</h3>
                         <p class="text-on-surface-variant mb-6" style="font-size: var(--body-size); line-height: var(--body-lh);">Convert special characters in strings to their URL-friendly percent-encoded equivalents.</p>
                     </div>
-                    <a class="inline-flex items-center gap-2 text-primary font-bold hover:gap-4 transition-all" href="#">Open tool <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+                    <a class="inline-flex items-center gap-2 text-primary font-bold hover:gap-4 transition-all" href="url-encode.html">Open tool <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
                 </div>
             </div>
         </section>
@@ -330,7 +330,7 @@ body {
                         <h3 class="text-on-surface mb-2 font-bold" style="font-size: var(--h-md-size); line-height: var(--h-md-lh);">JSON Formatter</h3>
                         <p class="text-on-surface-variant mb-6" style="font-size: var(--body-size); line-height: var(--body-lh);">Prettify messy JSON strings into a readable, indented structure with syntax highlighting.</p>
                     </div>
-                    <a class="inline-flex items-center gap-2 text-primary font-bold hover:gap-4 transition-all" href="#">Open tool <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+                    <a class="inline-flex items-center gap-2 text-primary font-bold hover:gap-4 transition-all" href="json-formatter.html">Open tool <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
                 </div>
                 <div class="tool-card p-6 hover:border-primary transition-all group flex flex-col justify-between h-full rounded-lg" style="background: var(--card-bg); border: 1px solid var(--outline-variant); border-radius: var(--card-rounded);">
                     <div>
@@ -338,7 +338,7 @@ body {
                         <h3 class="text-on-surface mb-2 font-bold" style="font-size: var(--h-md-size); line-height: var(--h-md-lh);">JSON Minifier</h3>
                         <p class="text-on-surface-variant mb-6" style="font-size: var(--body-size); line-height: var(--body-lh);">Compress your JSON data by removing all unnecessary whitespace and line breaks.</p>
                     </div>
-                    <a class="inline-flex items-center gap-2 text-primary font-bold hover:gap-4 transition-all" href="#">Open tool <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+                    <a class="inline-flex items-center gap-2 text-primary font-bold hover:gap-4 transition-all" href="json-minifier.html">Open tool <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
                 </div>
                 <div class="tool-card p-6 hover:border-primary transition-all group flex flex-col justify-between h-full rounded-lg" style="background: var(--card-bg); border: 1px solid var(--outline-variant); border-radius: var(--card-rounded);">
                     <div>
@@ -346,7 +346,7 @@ body {
                         <h3 class="text-on-surface mb-2 font-bold" style="font-size: var(--h-md-size); line-height: var(--h-md-lh);">JSON Validator</h3>
                         <p class="text-on-surface-variant mb-6" style="font-size: var(--body-size); line-height: var(--body-lh);">Check for syntax errors and validate your JSON structure against RFC standards.</p>
                     </div>
-                    <a class="inline-flex items-center gap-2 text-primary font-bold hover:gap-4 transition-all" href="#">Open tool <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+                    <a class="inline-flex items-center gap-2 text-primary font-bold hover:gap-4 transition-all" href="json-validator.html">Open tool <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
                 </div>
             </div>
         </section>
@@ -363,7 +363,7 @@ body {
                         <h3 class="text-on-surface mb-2 font-bold" style="font-size: var(--h-md-size); line-height: var(--h-md-lh);">Color Converter</h3>
                         <p class="text-on-surface-variant mb-6" style="font-size: var(--body-size); line-height: var(--body-lh);">Convert colors between HEX, RGB, HSL, and CMYK with a visual picker interface.</p>
                     </div>
-                    <a class="inline-flex items-center gap-2 text-primary font-bold hover:gap-4 transition-all" href="#">Open tool <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+                    <a class="inline-flex items-center gap-2 text-primary font-bold hover:gap-4 transition-all" href="color-converter.html">Open tool <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
                 </div>
                 <div class="tool-card p-6 hover:border-primary transition-all group flex flex-col justify-between h-full rounded-lg" style="background: var(--card-bg); border: 1px solid var(--outline-variant); border-radius: var(--card-rounded);">
                     <div>
@@ -371,7 +371,7 @@ body {
                         <h3 class="text-on-surface mb-2 font-bold" style="font-size: var(--h-md-size); line-height: var(--h-md-lh);">Timestamp Converter</h3>
                         <p class="text-on-surface-variant mb-6" style="font-size: var(--body-size); line-height: var(--body-lh);">Transform Unix timestamps into human-readable dates and back again easily.</p>
                     </div>
-                    <a class="inline-flex items-center gap-2 text-primary font-bold hover:gap-4 transition-all" href="#">Open tool <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+                    <a class="inline-flex items-center gap-2 text-primary font-bold hover:gap-4 transition-all" href="timestamp-converter.html">Open tool <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
                 </div>
                 <div class="tool-card p-6 hover:border-primary transition-all group flex flex-col justify-between h-full rounded-lg" style="background: var(--card-bg); border: 1px solid var(--outline-variant); border-radius: var(--card-rounded);">
                     <div>
@@ -379,7 +379,7 @@ body {
                         <h3 class="text-on-surface mb-2 font-bold" style="font-size: var(--h-md-size); line-height: var(--h-md-lh);">Markdown to HTML</h3>
                         <p class="text-on-surface-variant mb-6" style="font-size: var(--body-size); line-height: var(--body-lh);">Live preview and convert GitHub-flavored markdown into clean, semantic HTML.</p>
                     </div>
-                    <a class="inline-flex items-center gap-2 text-primary font-bold hover:gap-4 transition-all" href="#">Open tool <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+                    <a class="inline-flex items-center gap-2 text-primary font-bold hover:gap-4 transition-all" href="markdown-to-html.html">Open tool <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
                 </div>
             </div>
         </section>
@@ -396,7 +396,7 @@ body {
                         <h3 class="text-on-surface mb-2 font-bold" style="font-size: var(--h-md-size); line-height: var(--h-md-lh);">CSS Minifier</h3>
                         <p class="text-on-surface-variant mb-6" style="font-size: var(--body-size); line-height: var(--body-lh);">Optimize your stylesheets for production by removing bloat and unnecessary characters.</p>
                     </div>
-                    <a class="inline-flex items-center gap-2 text-primary font-bold hover:gap-4 transition-all" href="#">Open tool <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+                    <a class="inline-flex items-center gap-2 text-primary font-bold hover:gap-4 transition-all" href="css-minifier.html">Open tool <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
                 </div>
                 <div class="tool-card p-6 hover:border-primary transition-all group flex flex-col justify-between h-full rounded-lg" style="background: var(--card-bg); border: 1px solid var(--outline-variant); border-radius: var(--card-rounded);">
                     <div>
@@ -404,7 +404,7 @@ body {
                         <h3 class="text-on-surface mb-2 font-bold" style="font-size: var(--h-md-size); line-height: var(--h-md-lh);">CSS Beautifier</h3>
                         <p class="text-on-surface-variant mb-6" style="font-size: var(--body-size); line-height: var(--body-lh);">Format minified CSS with standard indentation and spacing for better maintenance.</p>
                     </div>
-                    <a class="inline-flex items-center gap-2 text-primary font-bold hover:gap-4 transition-all" href="#">Open tool <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+                    <a class="inline-flex items-center gap-2 text-primary font-bold hover:gap-4 transition-all" href="css-beautifier.html">Open tool <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
                 </div>
             </div>
         </section>
@@ -421,7 +421,7 @@ body {
                         <h3 class="text-on-surface mb-2 font-bold" style="font-size: var(--h-md-size); line-height: var(--h-md-lh);">UUID Generator</h3>
                         <p class="text-on-surface-variant mb-6" style="font-size: var(--body-size); line-height: var(--body-lh);">Generate bulk Version 4 Universally Unique Identifiers for your databases and APIs.</p>
                     </div>
-                    <a class="inline-flex items-center gap-2 text-primary font-bold hover:gap-4 transition-all" href="#">Open tool <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+                    <a class="inline-flex items-center gap-2 text-primary font-bold hover:gap-4 transition-all" href="uuid-generator.html">Open tool <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
                 </div>
                 <div class="tool-card p-6 hover:border-primary transition-all group flex flex-col justify-between h-full rounded-lg" style="background: var(--card-bg); border: 1px solid var(--outline-variant); border-radius: var(--card-rounded);">
                     <div>
@@ -429,7 +429,7 @@ body {
                         <h3 class="text-on-surface mb-2 font-bold" style="font-size: var(--h-md-size); line-height: var(--h-md-lh);">JWT Decoder</h3>
                         <p class="text-on-surface-variant mb-6" style="font-size: var(--body-size); line-height: var(--body-lh);">Safely decode JSON Web Tokens locally to inspect header and payload data.</p>
                     </div>
-                    <a class="inline-flex items-center gap-2 text-primary font-bold hover:gap-4 transition-all" href="#">Open tool <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+                    <a class="inline-flex items-center gap-2 text-primary font-bold hover:gap-4 transition-all" href="jwt-decoder.html">Open tool <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
                 </div>
                 <div class="tool-card p-6 hover:border-primary transition-all group flex flex-col justify-between h-full rounded-lg" style="background: var(--card-bg); border: 1px solid var(--outline-variant); border-radius: var(--card-rounded);">
                     <div>
@@ -437,7 +437,7 @@ body {
                         <h3 class="text-on-surface mb-2 font-bold" style="font-size: var(--h-md-size); line-height: var(--h-md-lh);">Regex Tester</h3>
                         <p class="text-on-surface-variant mb-6" style="font-size: var(--body-size); line-height: var(--body-lh);">Build and test regular expressions with live matching, groups, and substitution.</p>
                     </div>
-                    <a class="inline-flex items-center gap-2 text-primary font-bold hover:gap-4 transition-all" href="#">Open tool <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+                    <a class="inline-flex items-center gap-2 text-primary font-bold hover:gap-4 transition-all" href="regex-tester.html">Open tool <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
                 </div>
             </div>
         </section>
@@ -446,7 +446,7 @@ body {
 
 <!-- BottomNavBar -->
 <nav class="fixed bottom-0 w-full z-50 flex justify-around items-center h-16 bg-surface border-t border-outline-variant md:hidden">
-    <a class="flex flex-col items-center gap-1 text-primary font-bold scale-110 transition-transform duration-200" href="#">
+    <a class="flex flex-col items-center gap-1 text-primary font-bold scale-110 transition-transform duration-200" href="index.html">
         <span class="material-symbols-outlined">home</span>
         <span class="font-label-sm text-[10px]">Home</span>
     </a>
@@ -517,15 +517,6 @@ searchInput.addEventListener('input', (e) => {
     });
 });
 
-// Quick search sync
-const quickSearch = document.querySelector('input[placeholder="Quick search..."]');
-if (quickSearch) {
-    quickSearch.addEventListener('input', (e) => {
-        searchInput.value = e.target.value;
-        searchInput.dispatchEvent(new Event('input'));
-    });
-}
-
 // Header shadow on scroll
 window.addEventListener('scroll', () => {
     const header = document.querySelector('header');
@@ -535,6 +526,7 @@ window.addEventListener('scroll', () => {
         header.classList.remove('shadow-md');
     }
 });
+</script>
 </script>
 </body>
 </html>
